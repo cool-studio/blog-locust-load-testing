@@ -154,7 +154,7 @@ resource "kubernetes_deployment" "locust-deployment-master" {
 
           env {
             name = "TARGET_URL"
-            value = "https://cool.studio"
+            value = var.locust-target
           }
 
           env {
