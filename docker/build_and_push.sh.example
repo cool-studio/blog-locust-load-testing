@@ -1,0 +1,44 @@
+#!/bin/sh
+VERSION=2.3.0
+NAME=IMAGE-NAME
+
+REPO_HOSTNAME="YOUR PRIVATE REGISTRY"
+BUILD_NAME="$NAME"
+
+echo ""
+echo "---"
+echo "--- BUILDING $BUILD_NAME ---"
+echo "---"
+echo ""
+
+docker build . -t $BUILD_NAME
+docker tag $BUILD_NAME $REPO_HOSTNAME/$BUILD_NAME:latest
+docker tag $BUILD_NAME $REPO_HOSTNAME/$BUILD_NAME:$VERSION
+
+echo ""
+echo "---------------------"
+echo "--- BUILDING DONE ---"
+echo "---------------------"
+echo ""
+
+echo ""
+echo "---------------------"
+echo "--- PUSHING $NAME ---"
+echo "---------------------"
+echo ""
+
+echo ""
+echo "*** PUSHING TO $REPO_HOSTNAME/$BUILD_NAME:latest ***"
+echo ""
+docker push $REPO_HOSTNAME/$BUILD_NAME:latest
+
+echo ""
+echo "*** PUSHING TO $REPO_HOSTNAME/$BUILD_NAME:$VERSION ***"
+echo ""
+docker push $REPO_HOSTNAME/$BUILD_NAME:$VERSION
+
+echo ""
+echo "--------------------"
+echo "--- PUSHING DONE ---"
+echo "--------------------"
+echo ""
