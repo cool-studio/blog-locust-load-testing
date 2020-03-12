@@ -35,7 +35,7 @@ variable "k8s-pool-size" {
 }
 
 variable "k8s-pool-count" {
-  default = 1
+  default = 4
 }
 
 variable "k8s-deployment-image" {

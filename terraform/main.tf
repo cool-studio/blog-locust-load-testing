@@ -176,7 +176,7 @@ resource "kubernetes_deployment" "locust-deployment-slave" {
   }
 
   spec {
-    replicas = 1
+    replicas = ceil(var.k8s-pool-count * 3.5)
 
     selector {
       match_labels = {
